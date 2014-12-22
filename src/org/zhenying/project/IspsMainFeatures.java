@@ -76,10 +76,10 @@ public class IspsMainFeatures extends Configured implements Tool {
 
 	private void inputDatasource(JobConf job) {
 		// Local Mode
-		// FileInputFormat.addInputPath(job, new
-		// Path("data/input/textData-01666"));
+		FileInputFormat.addInputPath(job, new Path("data/input/textData-01666"));
 
 		// Grab the valid file list from s3.
+		/*
 		String crendential = s3crendential.getPremission();
 		String segmentListFile = "s3n://"
 				+ crendential
@@ -110,6 +110,7 @@ public class IspsMainFeatures extends Configured implements Tool {
 		} catch (URISyntaxException e) {
 			System.out.println("URI exception");
 		}
+		*/
 
 	}
 
