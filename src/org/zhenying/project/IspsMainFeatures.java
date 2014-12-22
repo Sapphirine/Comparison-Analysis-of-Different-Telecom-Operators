@@ -76,25 +76,32 @@ public class IspsMainFeatures extends Configured implements Tool {
 
 	private void inputDatasource(JobConf job) {
 		// Local Mode
-		// FileInputFormat.addInputPath(job, new Path("data/input/textData-01666"));
+		// FileInputFormat.addInputPath(job, new
+		// Path("data/input/textData-01666"));
 
-		// Grab the valid file list from s3.  
-		String segmentListFile = 
-				"s3://aws-publicdatasets/common-crawl/parse-output/valid_segments.txt";
+		// Grab the valid file list from s3.
+		String crendential = s3crendential.getPremission();
+		String segmentListFile = "s3n://"
+				+ crendential
+				+ "aws-publicdatasets/common-crawl/parse-output/valid_segments.txt";
 
 		FileSystem fsInput = null;
 		try {
 			fsInput = FileSystem.get(new URI(segmentListFile), job);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					fsInput.open(new Path(segmentListFile))));
-			
+
 			String segmentId;
-			
-			
-			while ((segmentId = reader.readLine()) != null) {
-				String inputPath = "s3://aws-publicdatasets/common-crawl/parse-output/segment/"
+
+			int cnt = 0;
+			while ((segmentId = reader.readLine()) != null && cnt < 2) {
+				String inputPath = "s3n://"
+						+ crendential
+						+ "aws-publicdatasets/common-crawl/parse-output/segment/"
 						+ segmentId + "/textData-*";
 				FileInputFormat.addInputPath(job, new Path(inputPath));
+
+				cnt++;
 			}
 
 		} catch (IOException e) {
