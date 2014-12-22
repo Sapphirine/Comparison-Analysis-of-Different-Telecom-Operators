@@ -17,6 +17,7 @@ s3://aws-publicdatasets/common-crawl/crawl-data/CC-MAIN-2013-48/segments/1386163
 5. Jar all the classes and use hadoop to envoke it. The output file is in ./data/output/</br>
 </br>
 <h3>Distributed mode: </h3>
+
 1. In file s3crendential.java, input your aws Access Id and Secret Key. Notice the Secret Key contain "/"s which should be convert to "%2F". </br>
 2. Jar all the classes. </br>
 3. Create an EMR cluster and upload the Jar. </br>
