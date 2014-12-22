@@ -94,7 +94,8 @@ public class IspsMainFeatures extends Configured implements Tool {
 			String segmentId;
 
 			int cnt = 0;
-			while ((segmentId = reader.readLine()) != null && cnt < 2) {
+			// To lower the cost, only read 2 files.
+			while ((segmentId = reader.readLine()) != null && cnt < 2) {  
 				String inputPath = "s3n://"
 						+ crendential
 						+ "aws-publicdatasets/common-crawl/parse-output/segment/"
