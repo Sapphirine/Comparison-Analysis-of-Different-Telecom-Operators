@@ -2,8 +2,7 @@ Comparison-Analysis-of-Different-Telecom-Operators
 ==================================================
 
 EECS6893 Big Data Analysis Final Project
-----
-----
+
 
 <h2>Running instruction: </h2>
 
